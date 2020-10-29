@@ -40,4 +40,41 @@ def random_state(width, height):
 
     return state
 
-print(random_state(20, 20))
+def state_width(state):
+    """Get the width of the state.
+    Params:
+    state: a Game state
+
+    Returns:
+    The width of the input state
+    """
+    return len(state)
+
+def state_height(state):
+    """Get the height of the state.
+    Params:
+    state: a Game state
+    
+    Returns:
+    The height of the input state"""
+    return len(state[0])
+
+def render(board_state):
+
+    DISPLAY_AS = {
+        DEAD: ' ',
+        #Unicode for a filled in square.
+        LIVE : u"\u2588"
+    }
+
+    lines = []
+    for x in range(state_height(board_state)):
+        line = ''
+        for y in range(state_width(board_state)):
+            line += DISPLAY_AS[board_state[x][y]] * 2
+        lines.append(line)
+    print("\n".join(lines))
+
+render(random_state(20, 20))
+
+
